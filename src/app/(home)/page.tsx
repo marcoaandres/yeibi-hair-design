@@ -1,4 +1,4 @@
-import { GallerySection, HeroAboutSection, ServicesSection, SocialFeedSection, TestimonialsSection } from "../components";
+import { ContactSection, GallerySection, HeroAboutSection, ServicesSection, SocialFeedSection, TestimonialsSection } from "../components";
 
 export default function HomePage() {
   return (
@@ -8,6 +8,7 @@ export default function HomePage() {
       <GallerySection />
       <TestimonialsSection />
       <SocialFeedSection />
+      <ContactSection />
     </>
   );
 }
