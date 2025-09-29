@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../ui/button";
 import { Menu, Phone, X } from "lucide-react";
 
 export function Header() {
@@ -39,16 +38,7 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
-            <div className="hidden xl:flex items-center space-x-2 text-sm text-muted-foreground">
-              <Phone className="h-4 w-4" />
-              <a href="tel:+5222129141234" className="hover:text-brand-accent transition-colors">
-                <span>22-12-91-41-34</span>
-              </a>
-            </div>
-            {/* <BookingModal>
-              <Button className="text-sm xl:text-base">Reservar Cita</Button>
-            </BookingModal> */}
-            <Button className="text-sm xl:text-base">Reservar Cita</Button>
+            <a href="https://wa.me/522212914134?text=Hola,%20me%20gustaría%20reservar%20una%20cita." className="text-sm xl:text-base" target="_blank" rel="noopener noreferrer">Reservar Cita</a>
           </div>
 
           <button 

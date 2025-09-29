@@ -12,10 +12,10 @@ export function Footer() {
               para todos tus servicios de belleza.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <a href="https://www.instagram.com/yeibivc/" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <a href="https://www.facebook.com/yeibi.vc" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
             </div>
@@ -39,10 +39,6 @@ export function Footer() {
                 <Phone className="h-4 w-4 mr-2" />
                 22-12-91-41-34
               </li>
-              <li className="flex items-center">
-                <Mail className="h-4 w-4 mr-2" />
-                hola@yeibi.life
-              </li>
               <li>Calle Playa Norte esquina con Vicente Lombardo Toledano 15324</li>
               <li>Heroes 5 de Mayo Sur, 72490</li>
               <li>Puebla, Puebla</li>
@@ -53,7 +49,7 @@ export function Footer() {
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/80">
           <p className="flex items-center justify-center">
             Hecho con <Heart className="h-4 w-4 mx-1 text-red-400" /> para mis clientes • 
-            &copy; 2025 Yeibi.life. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} yeibi.life. Todos los derechos reservados.
           </p>
         </div>
       </div>
