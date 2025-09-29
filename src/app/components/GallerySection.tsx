@@ -124,10 +124,12 @@ export function GallerySection() {
         )}
 
         <div className="text-center">
-          <a href="https://www.instagram.com/yeibivc/" target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            <Instagram className="mr-2 h-5 w-5" />
-            Ver más en Instagram
-          </a>
+          <Button size="lg" asChild>
+            <a href="https://www.instagram.com/yeibivc/" target="_blank" rel="noopener noreferrer">
+              <Instagram className="mr-2 h-5 w-5" />
+              Ver más en Instagram
+            </a>
+          </Button>
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
+import { Button } from "../ui";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +39,9 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
-            <a href="https://wa.me/522212914134?text=Hola,%20me%20gustaría%20reservar%20una%20cita." className="text-sm xl:text-base" target="_blank" rel="noopener noreferrer">Reservar Cita</a>
+            <Button asChild>
+              <a href="https://wa.me/522212914134?text=Hola,%20me%20gustaría%20reservar%20una%20cita." className="text-sm xl:text-base" target="_blank" rel="noopener noreferrer">Reservar Cita</a>
+            </Button>
           </div>
 
           <button 
@@ -94,9 +97,9 @@ export function Header() {
                     <span>22 12 91 41 34</span>
                   </a>
                 </div>
-                {/* <BookingModal>
-                  <Button className="w-full">Reservar Cita</Button>
-                </BookingModal> */}
+                <Button asChild>
+                  <a href="https://wa.me/522212914134?text=Hola,%20me%20gustaría%20reservar%20una%20cita." target="_blank" rel="noopener noreferrer" className="w-full">Reservar Cita</a>
+                </Button>
               </div>
             </nav>
           </div>

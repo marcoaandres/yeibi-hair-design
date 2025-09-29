@@ -1,5 +1,5 @@
 
-import { Card, CardContent, CardHeader, CardTitle } from "./ui";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "./ui";
 
 import { MapPin, Phone, Clock, Instagram, Facebook } from "lucide-react";
 
@@ -73,14 +73,18 @@ export function ContactSection() {
               </CardHeader>
               <CardContent>
                 <div className="flex space-x-4">
-                  <a href="https://www.instagram.com/yeibivc/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
-                    <Instagram className="h-4 w-4 mr-2" />
-                    Instagram
-                  </a>
-                  <a href="https://www.facebook.com/yeibi.vc" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
-                    <Facebook className="h-4 w-4 mr-2" />
-                    Facebook
-                  </a>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://www.instagram.com/yeibivc/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
+                      <Instagram className="h-4 w-4 mr-2" />
+                      Instagram
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href="https://www.facebook.com/yeibi.vc" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
+                      <Facebook className="h-4 w-4 mr-2" />
+                      Facebook
+                    </a>
+                  </Button>
                 </div>
                 <p className="text-sm text-muted-foreground mt-4">
                   Mantente al día con mis últimos trabajos y tips de belleza.

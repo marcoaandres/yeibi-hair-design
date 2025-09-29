@@ -49,7 +49,7 @@ export function SocialFeedSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {instagramPosts.map((post) => (
-            <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+            <Card key={post.id} className="overflow-hidden transition-shadow">
               <div className="relative">
                 <Image
                   src={post.image}
@@ -104,9 +104,11 @@ export function SocialFeedSection() {
         </div>
 
         <div className="text-center space-y-4">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            <Instagram className="mr-2 h-5 w-5" />
-            Seguir en Instagram
+          <Button size="lg" asChild>
+            <a href="https://www.instagram.com/yeibivc/" target="_blank" rel="noopener noreferrer">
+              <Instagram className="mr-2 h-5 w-5" />
+              Seguir en Instagram
+            </a>
           </Button>
           <p className="text-sm text-muted-foreground">
             @yeibivc • 2.5k seguidores • Especialista en belleza
