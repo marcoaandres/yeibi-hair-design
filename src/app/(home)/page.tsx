@@ -1,4 +1,4 @@
-import { ContactSection, GallerySection, HeroAboutSection, ServicesSection, SocialFeedSection, TestimonialsSection } from "../components";
+import { ContactSection, GallerySection, HeroAboutSection, ServicesSection } from "../components";
 
 export default function HomePage() {
   return (
@@ -6,8 +6,8 @@ export default function HomePage() {
       <HeroAboutSection />
       <ServicesSection />
       <GallerySection />
-      <TestimonialsSection />
-      <SocialFeedSection />
+      {/* <TestimonialsSection /> */}
+      {/* <SocialFeedSection /> */}
       <ContactSection />
     </>
   );

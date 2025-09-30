@@ -1,7 +1,7 @@
+import { MapPin, Phone, Clock, Instagram, Facebook } from "lucide-react";
 
 import { Button, Card, CardContent, CardHeader, CardTitle } from "./ui";
-
-import { MapPin, Phone, Clock, Instagram, Facebook } from "lucide-react";
+import { ContactForm } from "./ContactForm";
 
 export function ContactSection() {
 
@@ -23,7 +23,7 @@ export function ContactSection() {
                 <CardTitle>Formulario de Contacto</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-
+                <ContactForm />
               </CardContent>
             </Card>
           </div>
