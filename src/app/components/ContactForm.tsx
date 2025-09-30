@@ -11,7 +11,7 @@ export const ContactForm = () => {
     const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const userID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    const handlerSubmit = async (values: { name: string; cellphone: string; email: string; message: string }) => {
+    const handlerSubmit = async (values: { name: string; cellphone: string; email: string; service: string; message: string }) => {
         try {
             await emailjs.send(
                 serviceID!,
@@ -29,6 +29,7 @@ export const ContactForm = () => {
         name: "",
         cellphone: "",
         email: "",
+        service: "",
         message: "",
     },
     validationSchema: Yup.object({
@@ -42,8 +43,8 @@ export const ContactForm = () => {
         .max(10, 'El teléfono debe tener 10 dígitos'),
         email: Yup.string().email('El correo electrónico es inválido')
         .required('El correo electrónico es obligatorio'),
-        message: Yup.string().required('El mensaje es obligatorio')
-        .min(10, 'El mensaje debe tener al menos 10 caracteres')
+        service: Yup.string().required('El servicio es obligatorio'),
+        message: Yup.string().min(10, 'El mensaje debe tener al menos 10 caracteres')
         .max(150, 'El mensaje es muy largo, por favor sé más breve'),
     }),
     onSubmit: async (values) => {
@@ -114,10 +115,34 @@ export const ContactForm = () => {
       </div>
       <div className="space-y-2">
         <label
+          htmlFor="service"
+          className="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
+        >
+          Servicio de interés *
+        </label>
+        <select
+          id="service"
+          name="service"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.service}
+          className={`${formik.values.service == "" ? "text-muted-foreground" : ""} file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive`}
+        >
+            <option value="" disabled>Selecciona un servicio</option>
+            <option value="Corte de cabello" className="text-foreground">Corte de cabello</option>
+            <option value="Transformacion de Color" className="text-foreground">Transformación de Color</option>
+            <option value="Diseno de Unas" className="text-foreground">Diseño de Uñas</option>
+            <option value="Maquillaje Profesional" className="text-foreground">Maquillaje Profesional</option>
+            <option value="Peinados Especiales" className="text-foreground">Peinados Especiales</option>
+        </select>
+        {(formik.errors.service && formik.touched.service) && (<p className="text-sm text-destructive">{formik.errors.service}</p>)}
+      </div>
+      <div className="space-y-2">
+        <label
           htmlFor="message"
           className="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
         >
-          Mensaje *
+          Mensaje
         </label>
         <textarea
           id="message"
