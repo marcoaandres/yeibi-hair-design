@@ -2,9 +2,28 @@
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import emailjs from "@emailjs/browser"
+
 import { Button } from "./ui";
 
 export const ContactForm = () => {
+    const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const userID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+    const handlerSubmit = async (values: { name: string; cellphone: string; email: string; message: string }) => {
+        try {
+            await emailjs.send(
+                serviceID!,
+                templateID!,
+                values,
+                userID!,
+            );
+        } catch (error) {
+            console.error("Error al enviar el formulario:", error);
+        }
+    }
+
   const formik = useFormik({
     initialValues: {
         name: "",
@@ -16,7 +35,7 @@ export const ContactForm = () => {
         name: Yup.string().required('El nombre es obligatorio')
         .min(5, 'El nombre debe tener al menos 5 caracteres')
         .max(20, 'El nombre es muy largo')
-        .matches(/^[^a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/, 'El nombre solo puede contener letras y espacios'),
+        .matches(/^[a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/, 'El nombre solo puede contener letras y espacios'),
         cellphone: Yup.string().required('El teléfono es obligatorio')
         .matches(/^[0-9]+$/, 'El teléfono solo puede contener números')
         .min(10, 'El teléfono debe tener 10 dígitos')
@@ -27,8 +46,8 @@ export const ContactForm = () => {
         .min(10, 'El mensaje debe tener al menos 10 caracteres')
         .max(150, 'El mensaje es muy largo, por favor sé más breve'),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      await handlerSubmit(values);
     },
   });
 
