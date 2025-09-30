@@ -3,13 +3,24 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser"
+import DatePicker from "react-datepicker";
 
+import { CalendarIcon } from "lucide-react";
 import { Button } from "./ui";
+
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 export const ContactForm = () => {
     const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
     const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
     const userID = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 1);
+    const minDate = new Date();
+    minDate.setDate(minDate.getDate() + 1);
 
     const handlerSubmit = async (values: { name: string; cellphone: string; email: string; service: string; message: string }) => {
         try {
@@ -30,6 +41,7 @@ export const ContactForm = () => {
         cellphone: "",
         email: "",
         service: "",
+        date: minDate,
         message: "",
     },
     validationSchema: Yup.object({
@@ -136,6 +148,27 @@ export const ContactForm = () => {
             <option value="Peinados Especiales" className="text-foreground">Peinados Especiales</option>
         </select>
         {(formik.errors.service && formik.touched.service) && (<p className="text-sm text-destructive">{formik.errors.service}</p>)}
+      </div>
+      <div className="space-y-2">
+        <label
+          htmlFor="date"
+          className="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
+        >
+          Fecha Preferida *
+        </label>
+        <DatePicker
+          id="date"
+          name="date"
+          selected={formik.values.date}
+          onChange={(date) => formik.setFieldValue("date", date)}
+          onBlur={formik.handleBlur}
+          minDate={minDate}
+          maxDate={maxDate}
+          dateFormat={"dd/MM/yyyy"}
+          showIcon
+          icon={<CalendarIcon />}
+          className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
+        />
       </div>
       <div className="space-y-2">
         <label
