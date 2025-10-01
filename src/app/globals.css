@@ -319,3 +319,10 @@
   }
 }
 
+/* Date Picker */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker__view-calendar-icon input{
+  padding-left: 30px!important;
+}
