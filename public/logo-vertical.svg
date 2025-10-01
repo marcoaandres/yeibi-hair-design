@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" width="994" height="585" viewBox="6.000000 167.000000 994.000000 585.333333" preserveAspectRatio="xMidYMid meet">
+  <ns0:defs>
+    <ns0:style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;display=swap');
+      .ring { fill: none; stroke: #272158; stroke-width: 8; }
+      .swirl { fill: none; stroke: #F1BDD5; stroke-width: 12; stroke-linecap: round; }
+      .brand { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 100px; letter-spacing: 0.5px; fill: #272158; }
+      .divider { fill: #C6E7EB; }
+    </ns0:style>
+  </ns0:defs>
+  <ns0:rect width="100%" height="100%" fill="#ffffff" />
+  <ns0:g transform="matrix(1.727273,0,0,1.727273,292.727273,120.909091)">
+    <ns0:circle class="ring" cx="120" cy="150" r="110" />
+    <ns0:path class="swirl" d="M 80 90 C 170 40, 190 140, 120 160 C 60 178, 120 215, 200 240" />
+  </ns0:g>
+  <ns0:text class="brand" x="500" y="680" text-anchor="middle" dominant-baseline="middle">
+    <ns0:tspan>Yeibi</ns0:tspan><ns0:tspan> Hair Design.</ns0:tspan>
+  </ns0:text>
+  <ns0:rect class="divider" x="70" y="720" width="206" height="6" rx="3" />
+</ns0:svg>

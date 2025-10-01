@@ -64,23 +64,13 @@ export function HeroAboutSection() {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden">
               <Image
-                src="https://res.cloudinary.com/dpbqntcxi/image/upload/v1758408001/yeibi.life/yeibi_logo_csoi9y.jpg"
+                src="/logo-vertical.svg"
                 alt="Estilista profesional"
-                className="w-full h-96 object-cover"
+                className="w-full h-96"
                 width={500}
                 height={500}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
-            
-            <Card className="absolute -bottom-6 -left-6 bg-white shadow-lg">
-              <CardContent className="p-6">
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-primary">★ 5.0</p>
-                  <p className="text-sm text-muted-foreground">Calificación Promedio</p>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
 

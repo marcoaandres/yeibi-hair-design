@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { Button } from "../ui";
+import Image from "next/image";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-primary">Yeibi Hair Design.</h1>
+            <Image src="/logo-horizontal.svg" alt="Yeibi Hair Design" width={250} height={46} />
           </div>
           
           <nav className="hidden lg:flex space-x-6 xl:space-x-8">
