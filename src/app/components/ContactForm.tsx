@@ -1,15 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import emailjs from "@emailjs/browser"
+import emailjs from "@emailjs/browser";
 import DatePicker, { registerLocale } from "react-datepicker";
 import { es } from 'date-fns/locale/es';
-
-import { CalendarIcon } from "lucide-react";
-import { Button } from "./ui";
+import { CalendarIcon, CheckCircle, CircleXIcon } from "lucide-react";
+import { Button, Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui";
 
 import 'react-datepicker/dist/react-datepicker.css';
+
 
 registerLocale('es', es)
 
@@ -24,18 +25,30 @@ export const ContactForm = () => {
     const minDate = new Date();
     minDate.setDate(minDate.getDate() + 1);
 
-    const handlerSubmit = async (values: { name: string; cellphone: string; email: string; service: string; message: string }) => {
-        try {
-            await emailjs.send(
-                serviceID!,
-                templateID!,
-                values,
-                userID!,
-            );
-        } catch (error) {
-            console.error("Error al enviar el formulario:", error);
+    const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+    const [showErrorModal, setShowErrorModal] = useState(false);
+
+    const handlerSubmit = async (values: { name: string; cellphone: string; email: string; service: string; date: Date | null; message: string }) => {
+          
+            try {
+                await emailjs.send(
+                  serviceID!,
+                  templateID!,
+                  {
+                      ...values,
+                      date: values.date
+                          ? values.date.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
+                          : ''
+                  },
+                  userID!,
+                );
+                formik.resetForm();
+                setShowConfirmationModal(true);
+            } catch (error) {
+                setShowErrorModal(true);
+                console.error("Error al enviar el formulario:", error);
+            }
         }
-    }
 
   const formik = useFormik({
     initialValues: {
@@ -43,7 +56,7 @@ export const ContactForm = () => {
         cellphone: "",
         email: "",
         service: "",
-        date: minDate,
+        date: null,
         message: "",
     },
     validationSchema: Yup.object({
@@ -173,6 +186,7 @@ export const ContactForm = () => {
           showIcon
           icon={<CalendarIcon />}
           locale="es"
+          placeholderText="Selecciona una fecha"
           className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
         />
         {(typeof formik.errors.date === "string" && formik.touched.date) && (<p className="text-sm text-destructive">{formik.errors.date}</p>)}
@@ -200,6 +214,49 @@ export const ContactForm = () => {
       <Button type="submit" className="w-full" size="lg" disabled={!formik.isValid || formik.isSubmitting || !formik.dirty}>
         {formik.isSubmitting ? "Enviando..." : "Enviar Solicitud de Cita"}
       </Button>
+
+      <Dialog open={showConfirmationModal} onOpenChange={() => setShowConfirmationModal(false)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>¡Solicitud Enviada!</DialogTitle>
+            <DialogDescription>
+              Tu solicitud ha sido recibida exitosamente
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="text-center space-y-4 py-4">
+            <CheckCircle className="h-16 w-16 text-green-500 mx-auto" />
+            <h3 className="text-xl font-medium">¡Solicitud de Cita Enviada!</h3>
+            <p className="text-muted-foreground">
+              Hemos recibido tu solicitud de cita exitosamente. Te contactaremos pronto para confirmar los detalles y coordinar tu transformación de belleza.
+            </p>
+            <Button onClick={() => setShowConfirmationModal(false)} className="w-full">
+              Perfecto, gracias
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showErrorModal} onOpenChange={() => setShowErrorModal(false)}>
+        <DialogContent className="max-w-md">
+          <DialogHeader className="hidden">
+            <DialogTitle>¡Error al Enviar Solicitud!</DialogTitle>
+            <DialogDescription>
+              Ha ocurrido un error al enviar tu solicitud. Por favor, inténtalo de nuevo más tarde.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="text-center space-y-4 py-4">
+            <CircleXIcon className="h-16 w-16 text-red-500 mx-auto" />
+            <h3 className="text-xl font-medium">¡Error al Enviar Solicitud!</h3>
+            <p className="text-muted-foreground">
+              Ha ocurrido un error al enviar tu solicitud. Por favor, inténtalo de nuevo más tarde.
+            </p>
+            <Button onClick={() => setShowErrorModal(false)} className="w-full">
+              Lo intentaré más tarde
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </form>
   );
 };
