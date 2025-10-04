@@ -64,9 +64,9 @@ export function HeroAboutSection() {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden">
               <Image
-                src="/logo-vertical.svg"
+                src="/logo-vertical.png"
                 alt="Estilista profesional"
-                className="w-full h-96"
+                className="w-full"
                 width={500}
                 height={500}
               />
