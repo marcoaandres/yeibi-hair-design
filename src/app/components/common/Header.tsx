@@ -25,16 +25,16 @@ export function Header() {
           </div>
           
           <nav className="hidden lg:flex space-x-6 xl:space-x-8">
-            <a href="#inicio" className="text-foreground hover:text-primary transition-colors">
+            <a href="#inicio" className="text-foreground hover:text-primary hover:bg-accent/20 px-3 py-2 rounded-md transition-all duration-300 hover:scale-105">
               Inicio
             </a>
-            <a href="#servicios" className="text-foreground hover:text-primary transition-colors">
+            <a href="#servicios" className="text-foreground hover:text-primary hover:bg-accent/20 px-3 py-2 rounded-md transition-all duration-300 hover:scale-105">
               Servicios
             </a>
-            <a href="#galeria" className="text-foreground hover:text-primary transition-colors">
+            <a href="#galeria" className="text-foreground hover:text-primary hover:bg-accent/20 px-3 py-2 rounded-md transition-all duration-300 hover:scale-105">
               Galería
             </a>
-            <a href="#contacto" className="text-foreground hover:text-primary transition-colors">
+            <a href="#contacto" className="text-foreground hover:text-primary hover:bg-accent/20 px-3 py-2 rounded-md transition-all duration-300 hover:scale-105">
               Contacto
             </a>
           </nav>
@@ -61,31 +61,31 @@ export function Header() {
         {/* Menú móvil */}
         {isMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-border shadow-lg">
-            <nav className="px-4 py-6 space-y-4 bg-[rgba(0,0,0,0)]">
+            <nav className="px-4 py-6 space-y-4 bg-background/95 backdrop-blur-sm">
               <a 
                 href="#inicio" 
-                className="block text-foreground hover:text-primary transition-colors py-2"
+                className="block text-foreground hover:text-primary hover:bg-accent/20 px-3 py-2 rounded-md transition-all duration-300 hover:scale-105"
                 onClick={closeMenu}
               >
                 Inicio
               </a>
               <a 
                 href="#servicios" 
-                className="block text-foreground hover:text-primary transition-colors py-2"
+                className="block text-foreground hover:text-primary hover:bg-accent/20 px-3 py-2 rounded-md transition-all duration-300 hover:scale-105"
                 onClick={closeMenu}
               >
                 Servicios
               </a>
               <a 
                 href="#galeria" 
-                className="block text-foreground hover:text-primary transition-colors py-2"
+                className="block text-foreground hover:text-primary hover:bg-accent/20 px-3 py-2 rounded-md transition-all duration-300 hover:scale-105"
                 onClick={closeMenu}
               >
                 Galería
               </a>
               <a 
                 href="#contacto" 
-                className="block text-foreground hover:text-primary transition-colors py-2"
+                className="block text-foreground hover:text-primary hover:bg-accent/20 px-3 py-2 rounded-md transition-all duration-300 hover:scale-105"
                 onClick={closeMenu}
               >
                 Contacto

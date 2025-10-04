@@ -47,9 +47,12 @@ export function Footer() {
         </div>
 
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/80">
-          <p className="flex items-center justify-center">
-            Hecho con <Heart className="h-4 w-4 mx-1 text-red-400" /> para mis clientes • 
-            &copy; {new Date().getFullYear()} yeibi.life. Todos los derechos reservados.
+          <p className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0">
+            <span className="flex items-center">
+              Hecho con <Heart className="h-4 w-4 mx-1 text-red-400" /> para mis clientes
+            </span>
+            <span className="hidden sm:inline mx-2">•</span>
+            <span>&copy; {new Date().getFullYear()} Yeibi.life. Todos los derechos reservados.</span>
           </p>
         </div>
       </div>
