@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui";
 
 const services = [
@@ -39,16 +42,38 @@ export function ServicesSection() {
     <section id="servicios" className="py-12 md:py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-6 font-bold">Servicios Premium</h2>
-          <p className="text-lg text-[rgba(113,113,130,1)] max-w-3xl mx-auto">
+          <motion.h2
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl mb-6 font-bold"
+          >
+            Servicios Premium
+          </motion.h2>
+          <motion.p
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="text-lg text-[rgba(113,113,130,1)] max-w-3xl mx-auto"
+          >
             Cada servicio está diseñado para realzar tu belleza natural con técnicas innovadoras 
             y productos de la más alta calidad. Experimenta una transformación única que refleje 
             tu personalidad y estilo, con la atención personalizada que mereces.
-          </p>
+          </motion.p>
         </div>
         <div className="space-y-12">
           {services.map((service, index) => (
-            <Card key={index} className="group overflow-hidden">
+            <motion.div
+              key={index}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <Card className="group overflow-hidden">
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                 {/* Imagen */}
                 <div className={`relative w-full h-full aspect-square overflow-hidden mx-auto ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
@@ -75,6 +100,10 @@ export function ServicesSection() {
                 </div>
               </div>
             </Card>
+
+            </motion.div>
+
+            
           ))}
         </div>
       </div>

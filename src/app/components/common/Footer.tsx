@@ -1,8 +1,17 @@
-import { Heart, Instagram, Facebook, Mail, Phone } from "lucide-react";
+"use client";
+
+import { Heart, Instagram, Facebook, Phone } from "lucide-react";
+import { motion } from "motion/react";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <motion.footer
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="bg-primary text-primary-foreground"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
@@ -56,6 +65,6 @@ export function Footer() {
           </p>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
