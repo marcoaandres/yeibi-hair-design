@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
+import { motion } from "motion/react";
+
 import { Button } from "../ui";
 import Image from "next/image";
 
@@ -17,7 +19,12 @@ export function Header() {
   };
 
   return (
-    <header className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+      className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50"
+    > 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
@@ -106,6 +113,7 @@ export function Header() {
           </div>
         )}
       </div>
-    </header>
+    </motion.header>
+    
   );
 }
