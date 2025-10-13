@@ -41,7 +41,7 @@ export function ContactSection() {
             viewport={{ once: true }}
             className="lg:col-span-2"
         >
-          <Card>
+          <Card className="backdrop-blur-sm">
             <CardHeader>
               <CardTitle>Formulario de Contacto</CardTitle>
             </CardHeader>
@@ -58,7 +58,7 @@ export function ContactSection() {
               transition={{ duration: 0.6, delay: .8 }}
               viewport={{ once: true }}
             >
-              <Card>
+              <Card className="backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle>Información de Contacto</CardTitle>
                 </CardHeader>
@@ -102,7 +102,7 @@ export function ContactSection() {
               transition={{ duration: 0.6, delay: .8 }}
               viewport={{ once: true }}
             >
-              <Card>
+              <Card className="backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle>Sígueme en Redes</CardTitle>
                 </CardHeader>

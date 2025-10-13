@@ -63,7 +63,7 @@ export function ServicesSection() {
             tu personalidad y estilo, con la atención personalizada que mereces.
           </motion.p>
         </div>
-        <div className="space-y-12">
+        <div className="space-y-12 backdrop-blur-sm">
           {services.map((service, index) => (
             <motion.div
               key={index}
