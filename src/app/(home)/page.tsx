@@ -1,8 +1,9 @@
-import { ContactSection, GallerySection, HeroAboutSection, ServicesSection } from "../components";
+import { ContactSection, GallerySection, HeroAboutSection, ParticleBackground, ServicesSection } from "../components";
 
 export default function HomePage() {
   return (
     <>
+      <ParticleBackground />
       <HeroAboutSection />
       <ServicesSection />
       <GallerySection />
